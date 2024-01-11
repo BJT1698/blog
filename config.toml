@@ -45,5 +45,6 @@ menu_items = [
     {name = "mastodon", url = "https://mastodon.uno/@bjt1698", newtab = true},
     {name = "linkedin", url = "https://www.linkedin.com/in/lorenzo-vicentini/", newtab = true},
     {name = "segnala un problema", url = "https://github.com/BJT1698/blog/issues", newtab = true},
+    {name = "rss", url = "https://blog.bjt1698.it/rss.xml", newtab = true},
 ]
 
