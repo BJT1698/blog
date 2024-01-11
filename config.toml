@@ -35,8 +35,8 @@ menu_items = [
     {name = "about me", url = "$BASE_URL/about"},
     
     # set newtab to true to make the link open in new tab
-    {name = "github", url = "url-to-your-github", newtab = true},
-    {name = "mastodon", url = "url-to-your-github", newtab = true},
-    {name = "linkedin", url = "url-to-your-github", newtab = true},
+    {name = "mastodon", url = "https://mastodon.uno/@bjt1698", newtab = true},
+    {name = "linkedin", url = "https://www.linkedin.com/in/lorenzo-vicentini/", newtab = true},
+    {name = "segnala un problema", url = "https://github.com/BJT1698/blog/issues", newtab = true},
 ]
 
