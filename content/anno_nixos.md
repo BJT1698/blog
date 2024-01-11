@@ -15,7 +15,7 @@ L'idea di dichiarare un intero pc in 1/2 file di configurazione è a dir poco ap
 
 Lato server mi permette di dichiarare dei container direttamente da **configuration.nix** come se fossero dei docker compose (vedi [virtualisation.oci-containers](https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/virtualisation/oci-containers.nix)), così facendo NixOS crea un servizio SystemD separato per ogni container, oltretutto a ogni rebuild della configurazione verranno scaricate eventuali nuove immagini evitando così di utilizzare servizi come Watchtower.
 
-Vi lascio anche un piccolo snippet come esempio:
+Vi lascio anche un piccolo snippet di esempio:
 
 ```
 ...
