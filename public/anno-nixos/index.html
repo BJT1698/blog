@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="robots" content="noodp"/>
+
+    <link rel="stylesheet" href="https://blog.bjt1698.it/style.css">
+    <link rel="stylesheet" href="https://blog.bjt1698.it/color/green.css">
+
+        <link rel="stylesheet" href="https://blog.bjt1698.it/color/background_blue.css">
+    
+    <link rel="stylesheet" href="https://blog.bjt1698.it/font-hack-subset.css">
+
+    <meta name="description" content="">
+
+    <meta property="og:description" content="">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://blog.bjt1698.it/anno-nixos/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="">
+    <meta property="twitter:domain" content="blog.bjt1698.it">
+    <meta property="twitter:url" content="https://blog.bjt1698.it/anno-nixos/">
+
+    </head>
+
+<body class="">
+<div class="container">
+    
+    <header class="header">
+        <div class="header__inner">
+            <div class="header__logo">
+                    
+                <a href="https://blog.bjt1698.it" style="text-decoration: none;">
+                    <div class="logo">
+                      
+                            BJT1698
+                        
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        
+        
+                <nav class="menu">
+            <ul class="menu__inner">
+                <li class="active"><a href="https://blog.bjt1698.it">home</a></li>
+            
+                <li><a href="https://blog.bjt1698.it/tags">tags</a></li>
+            
+                <li><a href="https://blog.bjt1698.it/archive">archivio</a></li>
+            
+                <li><a href="https://blog.bjt1698.it/about">about me</a></li>
+            
+                <li><a href="url-to-your-github" target="_blank" rel="noopener noreferrer">github</a></li>
+            
+                <li><a href="url-to-your-github" target="_blank" rel="noopener noreferrer">mastodon</a></li>
+            
+                <li><a href="url-to-your-github" target="_blank" rel="noopener noreferrer">linkedin</a></li>
+            </ul>
+        </nav>
+    
+    
+        
+    </header>
+    
+
+    <div class="content">
+        
+    <div class="post">
+        
+    <h1 class="post-title"><a href="https://blog.bjt1698.it/anno-nixos/">Perchè il 2024 sarà l&#x27;anno di NixOS (per me)</a></h1>
+    <div class="post-meta-inline">
+        
+    <span class="post-date">
+            2024-01-06
+        </span>
+
+    </div>
+
+    
+        <span class="post-tags-inline">
+                :: tags:&nbsp;
+                <a class="post-tag" href="https://blog.bjt1698.it/tags/foss/">#foss</a>&nbsp;
+                <a class="post-tag" href="https://blog.bjt1698.it/tags/homelab/">#homelab</a>&nbsp;
+                <a class="post-tag" href="https://blog.bjt1698.it/tags/linux/">#linux</a>&nbsp;
+                <a class="post-tag" href="https://blog.bjt1698.it/tags/nixos/">#nixos</a></span>
+    
+
+        <div class="post-content">
+            <p>Era da un pò che ci stavo provando, ma alla fine mi sono convinto!</p>
+<span id="continue-reading"></span>
+<blockquote>
+<p>Per ora ho fatto il passaggio solo sul mio Laptop (Thinkpad T540P) ma a breve lo installerò anche sul mio homeserver.</p>
+</blockquote>
+<h3 id="che-cosa-mi-ha-convinto">Che cosa mi ha convinto?</h3>
+<p>L'idea di dichiarare un intero pc in 1/2 file di configurazione è a dir poco appagante, immagina formattare il tuo pc e rimetterlo in piedi in 10 minuti scarsi configurato esattamente come prima (dati personali esclusi ovviamente), tutto questo con un file di pochi KB clonato comodamente da un repository su Github.</p>
+<p>Lato server mi permette di dichiarare dei container direttamente da <strong>configuration.nix</strong> come se fossero dei docker compose (vedi <a href="https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/virtualisation/oci-containers.nix">virtualisation.oci-containers</a>), così facendo NixOS crea un servizio SystemD separato per ogni container, oltretutto a ogni rebuild della configurazione verranno scaricate eventuali nuove immagini evitando così di utilizzare servizi come Watchtower.</p>
+<p>Vi lascio anche un piccolo snippet di esempio:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>...
+</span><span>virtualisation.oci-containers = {
+</span><span>  backend = &quot;docker&quot;;
+</span><span>  containers = {
+</span><span>    nginx-proxy-manager = {
+</span><span>      image = &quot;jc21/nginx-proxy-manager:latest&quot;;
+</span><span>      ports = [
+</span><span>        &quot;80:80&quot;
+</span><span>        &quot;443:443&quot;
+</span><span>        &quot;81:81&quot;
+</span><span>      ];
+</span><span>      volumes = [
+</span><span>        &quot;container_data/nginx-proxy-manager/data:/data&quot;
+</span><span>        &quot;container_data/nginx-proxy-manager/letsencrypt:/etc/letsencrypt&quot;
+</span><span>      ];
+</span><span>    };
+</span><span>    homeassistant = {
+</span><span>      image = &quot;ghcr.io/home-assistant/home-assistant:stable&quot;;
+</span><span>      ports = [&quot;8124:8123&quot;];
+</span><span>      volumes = [
+</span><span>        &quot;/run/dbus:/run/dbus:ro&quot;
+</span><span>        &quot;container_data/homeassistant:/config&quot;
+</span><span>      ];
+</span><span>      environment = {
+</span><span>        TZ = &quot;Europe/Rome&quot;;
+</span><span>      };
+</span><span>      extraOptions = [
+</span><span>        &quot;--privileged&quot;
+</span><span>      ];
+</span><span>    };
+</span><span>  };
+</span><span>};
+</span><span>...
+</span></code></pre>
+<h3 id="che-cosa-non-mi-ha-convinto">Che cosa non mi ha convinto?</h3>
+<p>Poca roba. La wiki e la documentazione in generale fa abbastanza schifo, nulla a che vedere con la Arch Wiki che per assurdo la puoi utilizzare anche per altre distro tradizionali. Sicuramente migliorerà nel tempo.</p>
+<p>Ogni tanto potresti beccare qualche pacchetto un po' outdated ma non è un grandissimo problema, se invece lato server lavorate principalmente con i container allora non vi tocca minimamente.</p>
+
+        </div>
+
+        
+    </div>
+
+    </div>
+
+    
+    <footer class="footer">
+        <div class="footer__inner">
+                <div class="copyright">
+                        <span>© 
+    2024
+ Lorenzo Vicentini</span>
+                    <span class="copyright-theme">
+                        <span class="copyright-theme-sep">:: </span>
+                        Theme: <a href="https://github.com/pawroman/zola-theme-terminimal/">Terminimal</a> by pawroman
+                    </span>
+                </div>
+            </div>
+    </footer>
+    
+
+</div>
+</body>
+
+</html>

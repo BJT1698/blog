@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://blog.bjt1698.it/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/about/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/anno-nixos/</loc>
+        <lastmod>2024-01-06</lastmod>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/archive/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/tags/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/tags/foss/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/tags/homelab/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/tags/linux/</loc>
+    </url>
+    <url>
+        <loc>https://blog.bjt1698.it/tags/nixos/</loc>
+    </url>
+</urlset>
