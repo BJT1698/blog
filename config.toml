@@ -1,6 +1,6 @@
 # The URL the site will be built for
 base_url = "https://blog.bjt1698.it"
-title = "Blog - BJT98"
+title = "Blog - BJT1698"
 theme = "terminimal"
 
 generate_feed = true
