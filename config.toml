@@ -1,7 +1,14 @@
 # The URL the site will be built for
 base_url = "https://blog.bjt1698.it"
-
+title = "Blog - BJT98"
 theme = "terminimal"
+
+generate_feed = true
+feed_filename = "rss.xml"
+default_language = "en"
+
+favicon = "/img/profile.jpg"
+favicon_mimetype = "image/jpg"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true

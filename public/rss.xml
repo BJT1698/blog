@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Blog - BJT98</title>
+      <link>https://blog.bjt1698.it</link>
+      <description></description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://blog.bjt1698.it/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sat, 06 Jan 2024 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Perchè il 2024 sarà l&#x27;anno di NixOS (per me)</title>
+          <pubDate>Sat, 06 Jan 2024 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://blog.bjt1698.it/anno-nixos/</link>
+          <guid>https://blog.bjt1698.it/anno-nixos/</guid>
+          <description>&lt;p&gt;Era da un pò che ci stavo provando, ma alla fine mi sono convinto!&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>
