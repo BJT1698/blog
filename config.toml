@@ -7,8 +7,8 @@ generate_feed = true
 feed_filename = "rss.xml"
 default_language = "en"
 
-favicon = "/img/profile.jpg"
-favicon_mimetype = "image/jpg"
+favicon = "/favicon.png"
+favicon_mimetype = "image/png"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
